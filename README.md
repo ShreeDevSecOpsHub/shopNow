@@ -158,13 +158,3 @@ This project is created for **DevOps Assignment** purposes.
 **GitHub**: https://github.com/ShreeDevSecOpsHub
 ```
 
----
-
-**Done!** Just copy everything from the code block above and save it as `README.md`.
-
-Would you also like me to create:
-- A separate detailed `kubernetes/README.md`
-- The full `Jenkinsfile`
-- Sample `values.yaml` for Helm
-
-Let me know!
