@@ -155,7 +155,7 @@ This project is created for **DevOps Assignment** purposes.
 **Made with ❤️ for Learning Kubernetes & DevOps**
 
 **Your Name**  
-**GitHub**: [https://github.com/YOUR-USERNAME](https://github.com/YOUR-USERNAME)
+**GitHub**: https://github.com/ShreeDevSecOpsHub
 ```
 
 ---
