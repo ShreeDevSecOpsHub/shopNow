@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    environment {
+        ECR_REPO_FRONTEND = '<account>.dkr.ecr.<region>.amazonaws.com/<your-username>-shopnow/frontend'
+        // Similarly for backend/admin
+        TAG = "${env.BUILD_NUMBER}"
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/YOUR-USER/shopNow.git'
+            }
+        }
+        stage('Build Frontend') {
+            steps {
+                dir('frontend') {
+                    sh 'docker build -t $ECR_REPO_FRONTEND:$TAG .'
+                }
+            }
+        }
+        // Similar stages for backend, admin
+        stage('Push to ECR') {
+            steps {
+                script {
+                    sh 'aws ecr get-login-password --region <region> | docker login --username AWS --password-stdin <account>.dkr.ecr.<region>.amazonaws.com'
+                    sh "docker push $ECR_REPO_FRONTEND:$TAG"
+                    // Push others
+                }
+            }
+        }
+        stage('Deploy to K8s with Helm') {
+            steps {
+                sh '''
+                    helm upgrade --install frontend kubernetes/helm/charts/frontend \
+                      --namespace shopnow-demo \
+                      --set image.tag=$TAG
+                    # Similarly for others
+                '''
+            }
+        }
+    }
+    post {
+        success { echo 'Deployment successful!' }
+    }
+}
