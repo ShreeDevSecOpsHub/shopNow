@@ -1,0 +1,12 @@
+replicaCount: 2
+image:
+  repository: <your-ecr>/frontend
+  tag: "latest"
+service:
+  type: ClusterIP
+  port: 80
+ingress:
+  enabled: true
+  className: nginx
+  path: /<your-username>
+  # ...
