@@ -3,7 +3,7 @@
 # ShopNow - MERN Stack Kubernetes & Helm Deployment
 
 A complete **production-grade** deployment of a MERN (MongoDB, Express, React, Node.js) e-commerce application using **Kubernetes**, **Helm Charts**, and **Jenkins CI/CD**.
-
+```
 ---
 
 ## 📋 Project Overview
